@@ -2,7 +2,7 @@
 
 namespace Player
 {
-    [CreateAssetMenu(fileName = "PlayerJumpSetting", menuName = "OcclusionCountermeasures/Player")]
+    [CreateAssetMenu(fileName = "PlayerJumpSetting", menuName = "ScriptableObjects/Player")]
     public class PlayerJumpSetting : ScriptableObject
     {
         [SerializeField] private int _jumpLimitCount = 1;
