@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
-namespace UnityChan
+namespace Resources.unity_chan_.Unity_chan__Model.SplashScreen.Scripts
 {
 	[ExecuteInEditMode]
 	public class SplashScreen : MonoBehaviour

@@ -6,10 +6,10 @@
 //Rocket Jump : http://rocketjump.skr.jp/unity3d/109/
 //https://twitter.com/ricopin416
 //
-using UnityEngine;
-using System.Collections;
 
-namespace UnityChan
+using UnityEngine;
+
+namespace Resources.unity_chan_.Unity_chan__Model.Scripts
 {
 	public class RandomWind : MonoBehaviour
 	{

@@ -5,10 +5,10 @@
 //
 //2014/06/20 N.Kobayashi
 //
-using UnityEngine;
-using System.Collections;
 
-namespace UnityChan
+using UnityEngine;
+
+namespace Resources.unity_chan_.Unity_chan__Model.Scripts
 {
 	[RequireComponent(typeof(Animator))]
 	public class IKCtrlRightHand : MonoBehaviour

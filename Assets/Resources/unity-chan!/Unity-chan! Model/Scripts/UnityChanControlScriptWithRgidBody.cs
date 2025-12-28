@@ -3,10 +3,10 @@
 // サンプル
 // 2014/03/13 N.Kobyasahi
 //
-using UnityEngine;
-using System.Collections;
 
-namespace UnityChan
+using UnityEngine;
+
+namespace Resources.unity_chan_.Unity_chan__Model.Scripts
 {
 // 必要なコンポーネントの列記
 	[RequireComponent(typeof(Animator))]
