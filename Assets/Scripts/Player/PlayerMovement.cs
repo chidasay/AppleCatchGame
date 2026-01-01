@@ -5,6 +5,7 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement :  MonoBehaviour
     {
+        private static readonly int Run = Animator.StringToHash("Run");
         [SerializeField] private float _speed = 8.0f;
         
         private Rigidbody _rigidbody;
@@ -35,6 +36,16 @@ namespace Player
             
             // 改良以前はここでジャンプに関する処理をしていた
             // PlayerJumpControllerに切り出し
+            
+            // 仮のアニメーション（走る）
+            if(verticalInput != 0 || horizontalInput != 0)
+            {
+                _animator.SetBool(Run, true);
+            }
+            if(verticalInput == 0 && horizontalInput == 0)
+            {
+                _animator.SetBool(Run, false);
+            }
         }
 
         private void OnTriggerEnter(Collider appleCollider)

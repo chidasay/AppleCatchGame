@@ -8,17 +8,22 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public sealed class PlayerJumpController : MonoBehaviour
     {
+        private static readonly int Jump = Animator.StringToHash("Jump");
+
         [Header("ジャンプ設定")]
         [SerializeField] private float _jumpPower = 5f;
         [SerializeField] private PlayerJumpSetting _setting;
 
         private Rigidbody _rigidbody;
         private JumpLogic _jumpLogic;
+        private Animator _animator;
+        
         private bool _isGrounded;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
 
             if (_setting == null)
             {
@@ -55,6 +60,10 @@ namespace Player
             if (_isGrounded && !wasGrounded)
             {
                 _jumpLogic.SetContact();
+                
+                // 仮のアニメーション（ジャンプ）
+                _animator.SetBool(Jump, false);
+                
             }
             else if (!_isGrounded && wasGrounded)
             {
@@ -90,7 +99,9 @@ namespace Player
             Vector3 velocity = _rigidbody.velocity;
             velocity.y = _jumpPower;
             _rigidbody.velocity = velocity;
-            _rigidbody.velocity = velocity;
+            
+            // 仮のアニメーション（ジャンプ）
+            _animator.SetBool(Jump, true);
         }
 
         // ジャンプ停止時のイベントハンドラ
