@@ -10,6 +10,7 @@ namespace Player
     {
         [Header("ジャンプ設定")]
         [SerializeField] private float _jumpPower = 5f;
+        [SerializeField] private PlayerJumpSetting _setting;
 
         private Rigidbody _rigidbody;
         private JumpLogic _jumpLogic;
@@ -19,11 +20,14 @@ namespace Player
         {
             _rigidbody = GetComponent<Rigidbody>();
 
-            // 設定を準備
-            var settings = ScriptableObject.CreateInstance<PlayerJumpSetting>();
+            if (_setting == null)
+            {
+                Debug.LogError("PlayerJumpSettingがアサインされていません");
+                return;
+            }
 
             // JumpLogicを初期化
-            _jumpLogic = new JumpLogic(settings);
+            _jumpLogic = new JumpLogic(_setting);
 
             // イベントハンドラを登録
             _jumpLogic.OnJumpStarted += OnJumpStarted;
@@ -45,7 +49,7 @@ namespace Player
         {
             // 下方向にRayCastして接地判定
             bool wasGrounded = _isGrounded;
-            _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+            _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
             // 接地状態が変化したらJumpLogicに通知
             if (_isGrounded && !wasGrounded)
